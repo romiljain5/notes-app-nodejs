@@ -12,6 +12,7 @@
     "chalk": "^2.4.1",
     "global": "^4.4.0",
     "nodemon": "^2.0.15",
-    "validator": "^10.8.0"
+    "validator": "^10.8.0",
+    "yargs": "^17.4.1"
   }
 }
