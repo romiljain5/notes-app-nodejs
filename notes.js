@@ -32,6 +32,21 @@ const addNote = function (title, body){
     
 }
 
+const removeNote = function(title){
+    const notes = loadNotes()
+
+    const ExcludeRemovingNote = notes.filter(function(note){
+        // this will return an list of array which does not have removing title note
+        return note.title !== title
+    })
+    saveNotes(ExcludeRemovingNote)
+    if(notes.length > ExcludeRemovingNote.length){
+        console.log(chalk.green('Note removed'))
+    }else{
+        console.log(chalk.red('Note title does not exists'))
+    }
+}
+
 // creates json file and saves data in it
 const saveNotes = function(notes){
     const dataJSON = JSON.stringify(notes)
@@ -52,5 +67,6 @@ const loadNotes = function () {
 
 module.exports = {
     getNotes: getNotes,
-    addNote: addNote
+    addNote: addNote,
+    removeNote: removeNote
 }
