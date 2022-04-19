@@ -1,5 +1,5 @@
 const chalk = require('chalk')
-const getNotes = require('./notes.js')
+const notes = require('./notes.js')
 const yargs = require('yargs')
 
 // process.argv will give us an array, and then we choose 3rd element from that array which is 
@@ -31,10 +31,7 @@ yargs.command({
     },
     // passing argument i.e. argv will give us input of command from handler
     handler: function(argv){
-        const addingNote = chalk.green.bold('Adding Note')
-        const displayNote = chalk.cyan("title : "+argv.title, '\n','body : '+argv.body)
-        console.log(addingNote)
-        console.log(displayNote)
+        notes.addNote(argv.title, argv.body)
     }
 })
 
