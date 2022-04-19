@@ -32,6 +32,7 @@ const addNote = function (title, body){
     
 }
 
+// removes a note according to title
 const removeNote = function(title){
     const notes = loadNotes()
 
@@ -45,6 +46,15 @@ const removeNote = function(title){
     }else{
         console.log(chalk.red('Note title does not exists'))
     }
+}
+
+// list notes
+const listNotes = function(){
+    const notes = loadNotes()
+    
+    notes.forEach((note) => {
+        console.log(chalk.green(note.title))
+    })
 }
 
 // creates json file and saves data in it
@@ -65,8 +75,24 @@ const loadNotes = function () {
     }
 }
 
+const readNote = (title) => {
+    const notes = loadNotes()
+    const read = notes.find((note)=>{
+        return note.title === title
+    })
+
+    if(read){
+        console.log(chalk.magenta('Reading note'))
+        console.log(chalk.green(read.title)+'\n'+chalk.green(read.body))
+    }else{
+        console.log(chalk.red('No such title exists'))
+    }
+}
+
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
+    listNotes:listNotes,
+    readNote:readNote,
     removeNote: removeNote
 }
